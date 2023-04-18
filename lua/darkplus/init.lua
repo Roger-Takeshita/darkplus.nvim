@@ -12,6 +12,12 @@ M.setup = function()
   vim.o.termguicolors = true
   vim.g.colors_name = 'darkplus'
 
+  if vim.fn.has('nvim-0.9') then
+    for _, group in ipairs(vim.fn.getcompletion('@lsp', 'highlight')) do
+      vim.api.nvim_set_hl(0, group, {})
+    end
+  end
+
   theme.set_highlights()
 end
 
